@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>18.06</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+<context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>TEST.JSONService</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>StajUygulamalari</servlet-name>
+		<servlet-class>controllers.MusteriEkle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StajUygulamalari</servlet-name>
+		<url-pattern>/customerRegister</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowCustomers</servlet-name>
+		<servlet-class>controllers.MusteriListe</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowCustomers</servlet-name>
+		<url-pattern>/showCustomers</url-pattern>
+	</servlet-mapping>
+	
+ 
+   <security-constraint> 
+      <web-resource-collection> 
+         <web-resource-name>All Page</web-resource-name> 
+         <url-pattern>/*</url-pattern> 
+      </web-resource-collection> 
+      <auth-constraint> 
+         <role-name>user1</role-name> 
+      </auth-constraint> 
+   </security-constraint> 
+ 
+   <login-config> 
+      <auth-method>BASIC</auth-method> 
+      <realm-name>Giris</realm-name>
+ 
+   </login-config> 
+  
+ 
+
+	<listener>
+		<listener-class>listener.ServletContextListenerImpl</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>log4jConfiguration</param-name>
+		<param-value>log4j.xml</param-value>
+	</context-param>
+
+</web-app>
